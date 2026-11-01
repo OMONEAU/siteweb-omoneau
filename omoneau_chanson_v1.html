@@ -162,7 +162,7 @@ footer .legal{font-size:.72rem;color:var(--texte);opacity:.85;margin-top:10px}
         </button>
       </div>
     </div>
-    <p class="clip-note" id="clipnote">Le clip se joue ici même, sur omoneau.fr. Il est aussi sur la chaîne <a href="https://www.youtube.com/@Kreesofficiel" target="_blank" rel="noopener">Krees Officiel</a>.</p>
+    <p class="clip-note" id="clipnote">Le clip se joue ici même, sur omoneau.fr, depuis la chaîne <a href="https://www.youtube.com/@Kreesofficiel" target="_blank" rel="noopener">Krees Officiel</a>.</p>
   </div>
 
   <div class="ecoute">
@@ -220,14 +220,17 @@ footer .legal{font-size:.72rem;color:var(--texte);opacity:.85;margin-top:10px}
 </footer>
 
 <script>
+var CLIP_PRET = true;
 function ouvrirClip(){
+  if(!CLIP_PRET){ window.open("https://www.youtube.com/@Kreesofficiel", "_blank", "noopener"); return; }
   var l = document.getElementById("lecteur");
   if (l.querySelector("iframe")) return;
   var f = document.createElement("iframe");
-  f.src = "https://player.mediadelivery.net/embed/769057/7b40c503-969f-4b15-9c84-c35f8bef73e8?autoplay=true&loop=false&muted=false&preload=true&responsive=true";
+  f.src = "https://www.youtube-nocookie.com/embed/C_LB9B0WmOM?autoplay=1&playsinline=1&rel=0&modestbranding=1";
   f.title = "Clip « Ô mon eau » de Krees";
-  f.allow = "accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;fullscreen";
+  f.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen";
   f.setAttribute("allowfullscreen", "true");
+  f.setAttribute("referrerpolicy", "strict-origin-when-cross-origin");
   l.appendChild(f);
   document.getElementById("clipcover").classList.add("parti");
   document.getElementById("clipaffiche").style.display = "none";
